@@ -34,6 +34,6 @@ def penalty(L, nums):
  row = index // L 
  col = index - row * L 
    return matrix 
-   f = open('/output_question_5_1.txt','w') 
+   f = open('E/output_question_5_1.txt','w') 
  print(penalty(5, [13, 12]),file = f) 
  f.close() 
