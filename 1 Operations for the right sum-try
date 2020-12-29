@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string GenerateRDSequence(int m, int n, int64_t sum)
+{
+	int stringLen = m + n - 2;
+	string ret(stringLen, 'R');
+	for (int j = m - 1; j < stringLen; ++j)
+	{
+		ret[j] = 'D';
+	}
+	int64_t currentSum = m;
+	for (int j = 2; j <= n; ++j)
+	{
+		currentSum += j;
+	}
+	if (currentSum >= sum)
+		return ret;
+	int searchBegin = m - 2;
+	int searchEnd = 0;
+	while (searchEnd <= n - 2 && searchBegin < stringLen - 1)
+	{
+		for (int i = searchBegin; i >= searchEnd; --i)
+		{
+			swap(ret[i], ret[i + 1]);
+			++currentSum;
+			if (currentSum >= sum)
+			{
+				return ret;
+			}
+		}
+		++searchBegin;
+		++searchEnd;
+	}
+	return ret;
+}
+
+void testGenerateRDSequence()
+{
+	//string str = GenerateRDSequence(4, 4, 13);
+	//cout << str << endl;
+	string str = GenerateRDSequence(5, 5, 30);
+	cout << str << endl;
+	//string str = GenerateRDSequence(90000, 100000, 87127231192);
+	//cout << str << endl;
+}
