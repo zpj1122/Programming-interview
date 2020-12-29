@@ -1,0 +1,29 @@
+typedef struct tagST_POINT {
+    int x;
+    int y;
+} ST_POINT;
+ 
+bool PtInPolygon(ST_POINT p, ST_POINT* ptPolygon, int nCount)
+{ 
+    int nCross = 0, i;
+    double x;
+    ST_POINT p1, p2;
+    
+    for (i = 0; i < nCount; i++) 
+    { 
+        p1 = ptPolygon[i]; 
+        p2 = ptPolygon[(i + 1) % nCount];
+        if ( p1.y == p2.y )  
+            continue;
+        if ( p.y < min(p1.y, p2.y) ) 
+            continue; 
+        if ( p.y >= max(p1.y, p2.y) )  
+            continue;
+        x = (double)(p.y - p1.y) * (double)(p2.x - p1.x) / (double)(p2.y - p1.y) + p1.x;
+        if ( x > p.x ) 
+        {
+            nCross++;  
+        }
+    }
+    return (nCross % 2 == 1); 
+}
