@@ -19,14 +19,14 @@
  dfs(r, c) 
    return grid 
    m = [] 
- with open('/input_question_4.txt') as file: 
+ with open('E/input_question_4.txt') as file: 
  for line in file: 
  line = line.strip() 
  line = line.split('\t') 
  num_line = [int(i) for i in line] 
  m.append(num_line) 
  grid = m 
- f = open('/output_question_4.txt','w') 
+ f = open('E/output_question_4.txt','w') 
  print(grid,file = f) 
  print(solution(grid),file = f) 
  f.close() 
