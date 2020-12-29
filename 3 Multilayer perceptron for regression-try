@@ -1,0 +1,53 @@
+# Set up the model
+from __future__ import print_function
+import tensorflow as tf
+# Import data
+from tensorflow.examples.tutorials.mnist 
+import input_datamnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
+# Network Parameters 
+n_hidden_1 =4    
+n_hidden_2 = 4  
+n_hidden_3 = 4   
+n_hidden_4 = 4   
+n_input = 3       
+n_classes = 1   
+# set placeholders and specify the dimensions of the data
+x = tf.placeholder("float",[None, n_input])
+y = tf.placeholder("float",[None, n_classes])
+# create the multilayer perceptron
+def multilayer_perceptron(x,weights,biases):
+
+layer_1 = tf.add(tf.matmul(x, weights['h1']), biases['b1'])
+layer_1 = tf.nn.relu(layer_1)
+
+layer_2 = tf.add(tf.matmul(layer_1,weights['h2']), biases['b2'])
+layer_2 = tf.nn.relu(layer_2)
+
+layer_3 = tf.add(tf.matmul(layer_2,weights['h3']), biases['b3'])
+layer_3 = tf.nn.relu(layer_3)
+
+layer_4 = tf.add(tf.matmul(layer_3,weights['h4']), biases['b4'])
+layer_4 = tf.nn.relu(layer_4)
+
+out_layer = tf.matmul(layer_4,weights['out'] + biases['out'])
+return out_layer
+
+#initialization of weights
+weights =
+{
+    'h1':tf.Variable(tf.random_normal([n_input, n_hidden_1])),
+'h2':tf.Variable(tf.random_normal([n_hidden_1, n_hidden_2])),
+'h3':tf.Variable(tf.random_normal([n_hidden_2, n_hidden_3])),
+'h4':tf.Variable(tf.random_normal([n_hidden_3, n_hidden_4])),
+'out':tf.Variable(tf.random_normal([n_hidden_2, n_classes]))
+}
+#initialization of biases
+biases = 
+{
+    'b1': tf.Variable(tf.random_normal([n_hidden_1])),
+'b2': tf.Variable(tf.random_normal([n_hidden_2])),
+'b3': tf.Variable(tf.random_normal([n_hidden_3])),
+'b4': tf.Variable(tf.random_normal([n_hidden_4])),
+'out': tf.Variable(tf.random_normal([n_classes]))
+}
+pred = multilayer_perceptron(x, weights, biases)
