@@ -1,0 +1,39 @@
+def penalty(L, nums): 
+ matrix = [[0 for i in range(L)] for j in range(L)] 
+ nums = sorted(nums, reverse = True) 
+ colorName = [chr(ord("1") + i) for i in range(len(nums))] 
+   # record index from 0 to L**2 
+ index = 0 
+ # for color name 
+ i = 0 
+ # count the number of each color 
+ count = 0 
+ # total count 
+ totalCount = 0 
+ while totalCount < L ** 2: 
+ row = index // L 
+ col = index - row * L 
+ if L % 2 == 0 and row % 2 == 1: 
+ col += 1 
+ if matrix[row][col] != 0: 
+ continue 
+ matrix[row][col] = colorName[i] 
+ totalCount += 1 
+ count += 1 
+ if count == nums[i]: 
+ i += 1 
+ count = 0 
+ index += 2 
+ # find the next index from beginning 
+ if index >= L**2: 
+ index = 0 
+ row = 0 
+ col = 0 
+ while index < L**2 and matrix[row][col] != 0: 
+ index += 1 
+ row = index // L 
+ col = index - row * L 
+   return matrix 
+   f = open('/output_question_5_1.txt','w') 
+ print(penalty(5, [13, 12]),file = f) 
+ f.close() 
