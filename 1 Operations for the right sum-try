@@ -39,10 +39,16 @@ string GenerateRDSequence(int m, int n, int64_t sum)
 
 void testGenerateRDSequence()
 {
-	//string str = GenerateRDSequence(4, 4, 13);
+	//string str = GenerateRDSequence(9, 9, 65);
 	//cout << str << endl;
-	string str = GenerateRDSequence(5, 5, 30);
-	cout << str << endl;
+	//string str = GenerateRDSequence(9, 9, 72);
+	//cout << str << endl;
+	//string str = GenerateRDSequence(9, 9, 90);
+	//cout << str << endl;
+	//string str = GenerateRDSequence(9, 9, 100);
+	//cout << str << endl;
 	//string str = GenerateRDSequence(90000, 100000, 87127231192);
+	//cout << str << endl;
+	//string str = GenerateRDSequence(90000, 100000, 5994891682);
 	//cout << str << endl;
 }
