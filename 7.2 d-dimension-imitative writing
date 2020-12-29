@@ -3,7 +3,7 @@ coordinates_x1 = (I % L1)
 coordinates_x2 = (I // L1)
 return [coordinates_x1, coordinates_x2]
 
-if __name__ == '__main__': 在 if __name__ == 'main': 
+if __name__ == '__main__': 
 L1 = 50
 L2 = 57
 grid = []
